@@ -18,5 +18,10 @@ print (currDate.day)
 
 print (currDate.strftime('%A %d %B, %Y'))
 
+print ("Timedelta 15 days : ")
+print (currDate + datetime.timedelta(days=15))
+print ("Timedelta 15 hours : ")
+print (currDate + datetime.timedelta(hours=25))
+
 
 
