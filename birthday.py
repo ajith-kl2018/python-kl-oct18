@@ -8,7 +8,7 @@ Created on Wed Oct 31 13:42:04 2018
 
 import datetime
 
-birthday = input ("What is your birthday?")
+birthday = input ("What is your birthday? (dd/mm/YYYY) :")
 
 birthdate = datetime.datetime.strptime(birthday,"%d/%m/%Y").date()
 
