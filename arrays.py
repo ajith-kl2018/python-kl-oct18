@@ -31,13 +31,31 @@ guests.append('New Guy')
 #print(guests.index('fourth'))
 
 #for step in range(4):
-for step in range(len(guests)):
-    print(guests[step])
+#for step in range(len(guests)):
+#    print(guests[step])
     
 
-scores = [78,68,88,98,25]
+#scores = [78,68,88,98,25]
 #print(scores[3])
 #print(scores[-2])
+
+"""
+guests.sort()
+
+for guest in guests:
+    print (guest)
+    
+print ("Done")
+"""
+
+
+scores = [78,68,88,98,25]
+scores.sort()
+
+for score in scores:
+    print (score)
+    
+print ("Done")
 
 
 
