@@ -24,18 +24,35 @@ class Dog:
 
 
 #Static method
-Dog.testStatic()
+#Dog.testStatic()
 
 
 #Instance of a class
-john = Dog("John", 25)
-print(john.description())
-john.testStatic()
+#john = Dog("John", 25)
+#print(john.description())
+#john.testStatic()
 
 #Instance of a class 
-kim = Dog(name="Kim")
-print(kim.description())
+#kim = Dog(name="Kim")
+#print(kim.description())
 
 #Instance of a class
-doggy = Dog()
-print(doggy.description())
+#doggy = Dog()
+#print(doggy.description())
+
+# Determine the oldest dog
+
+
+def get_biggest_number(*args):
+    return max(args)
+
+
+# Instantiate the Dog object
+jake = Dog("Jake", 7)
+doug = Dog("Doug", 4)
+william = Dog("William", 5)
+
+# Output
+#print("The oldest dog is {} years old.".format(
+#    get_biggest_number(jake.age, doug.age, william.age)))
+print(f"The oldest dog is {get_biggest_number(jake.age, doug.age, william.age)} years old.")
