@@ -1,0 +1,6 @@
+2018-11-22 14:38:09,328 - flask.app - WARNING - A warning occurred (42 apples)
+2018-11-22 14:38:09,328 - flask.app - ERROR - An error occurred
+2018-11-22 14:39:24,708 - flask.app - WARNING - A warning occurred (42 apples)
+2018-11-22 14:39:24,708 - flask.app - ERROR - An error occurred
+2018-11-22 14:41:21,027 - flask.app - WARNING - A warning occurred (42 apples)
+2018-11-22 14:41:21,027 - flask.app - ERROR - An error occurred
