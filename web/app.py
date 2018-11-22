@@ -7,6 +7,8 @@ from flask import Flask, render_template, json, request
 #from flask.ext.mysql import MySQL
 from flaskext.mysql import MySQL
 from werkzeug import generate_password_hash, check_password_hash
+import logging
+from logging.handlers import RotatingFileHandler
 
 mysql = MySQL()
 app = Flask(__name__)
@@ -50,6 +52,7 @@ def signUp():
             sqlQuery = "insert into tbl_user values(" + _uid + ",'" + _name + "','" + _email + "','" + _password + "')"
 
             print("SQL Query:",sqlQuery)
+            app.logger.warning("SQL Query:"+str(sqlQuery))
 
             cursor.execute(sqlQuery)
             data = cursor.fetchall()
@@ -63,10 +66,17 @@ def signUp():
             return json.dumps({'html':'<span>Enter the required fields</span>'})
 
     except Exception as e:
+        app.logger.error('An error occurred' + str(e))
         return json.dumps({'error':str(e)})
     finally:
         cursor.close() 
         conn.close()
 
 if __name__ == "__main__":
+    handler = RotatingFileHandler('apperror.log', maxBytes=10000, backupCount=1)
+    handler.setLevel(logging.INFO)
+    formatter = logging.Formatter(
+        "%(asctime)s - %(name)s - %(levelname)s - %(message)s")
+    handler.setFormatter(formatter)
+    app.logger.addHandler(handler)
     app.run(port=5002)

@@ -14,10 +14,6 @@ def foo():
 
 if __name__ == '__main__':
     handler = RotatingFileHandler('foo.log', maxBytes=10000, backupCount=1)
-    #handler.setLevel(logging.INFO)
-    #log = logging.getLogger('werkzeug')
-    #log.setLevel(logging.DEBUG)
-    
     handler.setLevel(logging.DEBUG)
     formatter = logging.Formatter(
         "%(asctime)s - %(name)s - %(levelname)s - %(message)s")

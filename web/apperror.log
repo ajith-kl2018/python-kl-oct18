@@ -1,0 +1,1 @@
+2018-11-22 14:46:57,305 - flask.app - WARNING - SQL Query:insert into tbl_user values(1,'tset','sdf','sdf')
