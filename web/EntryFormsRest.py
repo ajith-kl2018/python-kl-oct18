@@ -13,6 +13,7 @@ from flask_restful import reqparse, abort, Api, Resource
 
 mysql = MySQL()
 app = Flask(__name__)
+api = Api(app)
 
 # MySQL configurations
 """
@@ -64,7 +65,7 @@ def selectCustomer(cus_code) :
         conn.close()
 
 
-def selectCustomer(cus_code):
+def deleteCustomer(cus_code):
 
     try:
         conn = mysql.connect()
@@ -133,13 +134,14 @@ def putCustomer(cus_code, cus_lname, cus_fname, cus_initial, cus_areacode, cus_p
 
 class customer(Resource):
     def get(self, cus_code):
-        abort_if_todo_doesnt_exist(cus_code)
-        return TODOS[cus_code]
+        #abort_if_todo_doesnt_exist(cus_code)
+        
+        return selectCustomer(cus_code)
 
     def delete(self, cus_code):
         #abort_if_todo_doesnt_exist(cus_code)
         #del TODOS[cus_code]
-        return '', 204
+        return deleteCustomer(cus_code), 204
 
     def put(self, cus_code):
         #_cus_code = request.form['cus_code']
@@ -156,10 +158,7 @@ class customer(Resource):
         return putCustomer(_cus_code, _cus_lname, _cus_fname, _cus_initial, _cus_areacode, _cus_phone, _cus_balance), 201
 
 
-
-
-
-
+api.add_resource(customer, '/<string:cus_code>')
 
 if __name__ == "__main__":
     handler = RotatingFileHandler('apperror.log', maxBytes=10000, backupCount=1)
@@ -168,4 +167,5 @@ if __name__ == "__main__":
         "%(asctime)s - %(name)s - %(levelname)s - %(message)s")
     handler.setFormatter(formatter)
     app.logger.addHandler(handler)
-    app.run(port=725)
+    #app.run(port=725)
+    app.run(debug=True)
